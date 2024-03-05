@@ -1,0 +1,29 @@
+Program.Sub.ScreenSU.Start
+Program.Sub.ScreenSU.End
+
+Program.Sub.Preflight.Start
+
+Program.Sub.Preflight.End
+
+Program.Sub.Main.Start
+'Coded by: CHANDANA
+'Project Start Date: 11/7/2011
+
+F.Intrinsic.Control.If(V.Caller.Hook,=,11010)
+	V.Passed.000201.Set("Inv Desc")
+F.Intrinsic.Control.Endif
+
+F.Intrinsic.Control.If(V.Caller.Hook,=,11120)
+
+	V.Local.sRet.Declare(String)
+	F.Intrinsic.UI.CommonBrowser(105,"",V.Local.sRet)
+	F.Intrinsic.Control.If(V.Local.sRet,<>,"***CANCEL***")
+		F.Intrinsic.String.Split(V.Local.sRet,"*!*",V.Local.sRet)
+		V.Passed.000017.Set(V.Local.sRet(2))
+	F.Intrinsic.Control.EndIf
+
+F.Intrinsic.Control.EndIf
+
+Program.Sub.Main.End
+
+
